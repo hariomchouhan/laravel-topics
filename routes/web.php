@@ -18,14 +18,25 @@ use App\Http\Controllers\MyFolder\ResourceController;
 |
 */
 
-Route::get('/', function ($name = null) { 
+Route::get('/', function () { 
+    return view('home');
+});
+Route::get('/hariom', function () { 
+    return view('hariom');
+});
+Route::get('/about', function () { 
+    return view('about');
+});
+
+Route::get('/contact', function ($name = null) { 
     $data = compact('name');
     return view('Contact')->with($data);
 });
 
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
-Route::get('/customer', [CustomerController::class, 'index']);
+Route::get('/customer', [CustomerController::class, 'index'])->name('customer.create');
+Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
 Route::get('/customer/view', [CustomerController::class, 'view']);
 Route::post('/customer', [CustomerController::class, 'store']);
 

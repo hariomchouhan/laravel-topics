@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Contact</title>
-</head>
-<body>
+@extends('index')
+
+@section('main')
     <h1>{!!$name!!} Chouhan</h1>
     @if($name == "") 
         {{"Name is empty"}}
@@ -38,5 +33,4 @@
         @endif
         <h2>{{$i}}</h2>
     @endfor
-</body>
-</html>
+@endsection
