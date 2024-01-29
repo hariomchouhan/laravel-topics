@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MyFirstController;
 use App\Models\Customer;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MyFolder\SingleActionController;
 use App\Http\Controllers\MyFolder\ResourceController;
 /*
@@ -24,16 +25,16 @@ Route::get('/', function ($name = null) {
 
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
-
-Route::get('/customer', function(){
-    $customers = Customer::all();
-    echo "<pre>";
-    print_r($customers->toArray());
-});
+Route::get('/customer', [CustomerController::class, 'index']);
+Route::post('/customer', [CustomerController::class, 'store']);
 
 
 
-
+// Route::get('/customer', function(){
+//     $customers = Customer::all();
+//     echo "<pre>";
+//     print_r($customers->toArray());
+// });
 
 // Route::get('/', [MyFirstController::class, 'index']);
 // Route::get('/hariom', [MyFirstController::class, 'hariom']);
