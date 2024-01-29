@@ -42,14 +42,18 @@ class CustomerController extends Controller
         $customer->points = $request['points'];
         $customer->password = md5($request['password']);
         $customer->save();
+
+        return redirect('/customer/view');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function view()
     {
-        //
+        $customers = Customer::all();
+        $data = compact('customers');
+        return view('customer-view')->with($data);
     }
 
     /**

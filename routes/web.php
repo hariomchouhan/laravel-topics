@@ -26,6 +26,7 @@ Route::get('/', function ($name = null) {
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
 Route::get('/customer', [CustomerController::class, 'index']);
+Route::get('/customer/view', [CustomerController::class, 'view']);
 Route::post('/customer', [CustomerController::class, 'store']);
 
 
