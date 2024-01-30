@@ -11,9 +11,22 @@ class CustomerController extends Controller
      */
     public function index()
     {
+        $customer = new Customer;
+        $customer->name = "";
+        $customer->email = "";
+        $customer->gender = "";
+        $customer->address = "";
+        $customer->state = "";
+        $customer->country = "";
+        $customer->dob = "";
+        $customer->status = "";
+        $customer->points = "";
+        $customer->password = "";
+
+
         $url = url('/customer');
         $title = "Customer Registration";
-        $data = compact('url', 'title');
+        $data = compact('customer', 'url', 'title');
         return view('customer')->with($data);
     }
 
