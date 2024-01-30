@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('address');
             $table->date('dob');
             $table->string('password');
-            $table->boolean('status')->nullable();
+            $table->boolean('status')->default(0);
             $table->integer('points')->nullable();
             $table->timestamps(); // created_at updated_at
         });

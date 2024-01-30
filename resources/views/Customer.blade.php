@@ -23,8 +23,14 @@
                 <label for="other">Other</label>
                 <x-input type="date" name="dob" placeholder="Enter Date" label="Date" />
                 <x-input type="number" name="points" placeholder="Enter your points" label="Points" />
-                <label for="status">Status</label>
-                <input type="radio" name="status" id="status"/>
+                <label>Status</label>
+                <br>
+                <label for="active">
+                <input type="radio" name="status" value="1" id="active" checked/>
+                Active</label>
+                <label for="deactive">
+                <input type="radio" name="status" value="0" id="deactive"/>
+                Deactive</label>
 
                 <br>
                 <button class="btn btn-primary mt-4">Submit</button>
