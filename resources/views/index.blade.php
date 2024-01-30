@@ -22,8 +22,8 @@
                 <a class="nav-link text-white font-weight-bold" href="/about">About</a>
                 <a class="nav-link text-white font-weight-bold" href="/register">Register</a>
                 <a class="nav-link text-white font-weight-bold" href="/contact">Contact</a>
-                <a class="nav-link text-white font-weight-bold" href="/customer/view">Customer View</a>
-                <a class="nav-link text-white font-weight-bold" href="{{route('customer.create')}}">Customer</a>
+                <a class="nav-link text-white font-weight-bold" href="{{route('customer.view')}}">Customer View</a>
+                <a class="nav-link text-white font-weight-bold" href="{{route('customer.create')}}">Customer Create</a>
             </nav>
         </div>
     </div>

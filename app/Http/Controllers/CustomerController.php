@@ -11,15 +11,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('customer');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-       //
+        $url = url('/customer');
+        $title = "Customer Registration";
+        $data = compact('url', 'title');
+        return view('customer')->with($data);
     }
 
     /**
@@ -59,9 +54,34 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $customer = Customer::find($id);
+        if(is_null($customer)) {
+            // not found
+            return redirect('customer.view');
+        }
+        else {
+            // found
+            $title = "Update Customer";
+            $url = url('/customer/update')."/".$id;
+            $data = compact('customer', 'url', 'title');
+            return view('customer')->with($data);
+        }
+    }
+
+    public function update($id, Request $request) {
+        $customer = Customer::find($id);
+        $customer->name = $request['name'];
+        $customer->email = $request['email'];
+        $customer->gender = $request['gender'];
+        $customer->address = $request['address'];
+        $customer->state = $request['state'];
+        $customer->country = $request['country'];
+        $customer->dob = $request['dob'];
+        $customer->save();
+
+        return redirect('customer/view');
     }
 
     /**

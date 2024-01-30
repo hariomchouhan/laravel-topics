@@ -13,6 +13,7 @@
                 <th>Gender</th>
                 <th>DOB</th>
                 <th>State</th>
+                <th>Address</th>
                 <th>Country</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -33,6 +34,7 @@
                     @endif
                 </td>
                 <td>{{$customer->dob}}</td>
+                <td>{{$customer->address}}</td>
                 <td>{{$customer->state}}</td>
                 <td>{{$customer->country}}</td>
                 <td>
@@ -50,7 +52,9 @@
                     <a href="{{route('customer.delete', ['id' => $customer->customer_id])}}">
                         <button class="btn btn-danger">Delete</button>
                     </a>
-                    <button class="btn btn-primary">Edit</button>
+                    <a href="{{route('customer.edit', ['id' => $customer->customer_id])}}">
+                        <button class="btn btn-primary">Edit</button>
+                    </a>
                 </td>
             </tr>
             @endforeach

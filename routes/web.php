@@ -35,9 +35,11 @@ Route::get('/contact', function ($name = null) {
 
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
-Route::get('/customer', [CustomerController::class, 'index'])->name('customer.create');
+Route::get('/customer/create', [CustomerController::class, 'index'])->name('customer.create');
 Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
-Route::get('/customer/view', [CustomerController::class, 'view']);
+Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+Route::get('/customer/view', [CustomerController::class, 'view'])->name('customer.view');
 Route::post('/customer', [CustomerController::class, 'store']);
 
 
