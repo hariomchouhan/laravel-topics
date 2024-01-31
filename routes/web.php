@@ -7,6 +7,7 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\MyFolder\SingleActionController;
 use App\Http\Controllers\MyFolder\ResourceController;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,6 +42,24 @@ Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('cu
 Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
 Route::get('/customer/view', [CustomerController::class, 'view'])->name('customer.view');
 Route::post('/customer', [CustomerController::class, 'store']);
+
+Route::get('get-all-session', function () {
+    $session = session()->all();
+    p($session);
+});
+
+Route::get('set-session', function (Request $request) {
+    $request->session()->put('name', 'Hariom Chouhan');
+    $request->session()->put('user_id', '123');
+    $request->session()->flash('status', 'Success');
+    return redirect('get-all-session');
+});
+
+Route::get('destroy-seession', function () {
+    session()->forget('name');
+    session()->forget('user_id');
+    return redirect('get-all-session');
+});
 
 
 

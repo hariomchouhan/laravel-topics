@@ -17,6 +17,15 @@
     <div class="container-fluid bg-primary mb-4">
         <div class="container">
             <nav class="nav justify-content-center text-white py-3">
+                <a class="nav-link active text-white font-weight-bold" href="#">
+                    @if (session()->has('name')) 
+                        {{session()->get('name')}}
+                    
+                    @else 
+                        Guest
+                    
+                    @endif
+                </a>
                 <a class="nav-link active text-white font-weight-bold" href="/">Home</a>
                 <a class="nav-link text-white font-weight-bold" href="/hariom">Hariom</a>
                 <a class="nav-link text-white font-weight-bold" href="/about">About</a>
