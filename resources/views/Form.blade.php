@@ -1,5 +1,6 @@
 @extends('index')
 
+@section('title', 'Register')
 @section('main')
     <div class="container">
 

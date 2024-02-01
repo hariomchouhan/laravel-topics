@@ -1,5 +1,6 @@
 @extends('index')
 
+@section('title', 'Contact')
 @section('main')
     <h1>{!!$name!!} Chouhan</h1>
     @if($name == "") 

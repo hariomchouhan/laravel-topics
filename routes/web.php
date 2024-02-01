@@ -38,9 +38,12 @@ Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
 Route::get('/customer/create', [CustomerController::class, 'index'])->name('customer.create');
 Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+Route::get('/customer/force-delete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.force-delete');
+Route::get('/customer/restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
 Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
 Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
 Route::get('/customer/view', [CustomerController::class, 'view'])->name('customer.view');
+Route::get('/customer/trash', [CustomerController::class, 'trash'])->name('customer.trash');
 Route::post('/customer', [CustomerController::class, 'store']);
 
 Route::get('get-all-session', function () {

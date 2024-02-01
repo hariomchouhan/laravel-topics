@@ -1,5 +1,6 @@
 @extends('index')
 
+@section('title', 'Customer')
 @section('main')
 <div class="">
     <div class="col-6 mx-auto shadow p-5 mt-5 rounded">

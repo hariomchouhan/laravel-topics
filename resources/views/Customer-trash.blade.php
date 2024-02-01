@@ -1,11 +1,11 @@
 @extends('index')
 
-@section('title', 'Customer List')
+@section('title', 'Customer Trash List')
 @section('main')
 <div class="container">
     <div class="container text-right my-3">
         <a href="{{route('customer.create')}}" class="btn btn-primary">Add</a>
-        <a href="{{route('customer.trash')}}" class="btn btn-danger">Go to trash</a>
+        <a href="{{route('customer.view')}}" class="btn btn-primary">Customer View</a>
     </div>
     <table class="table">
         <thead>
@@ -51,11 +51,11 @@
                     <!-- <a href="{{url('/customer/delete/')}}/{{$customer->customer_id}}"> -->
 
                     <!-- this is route() method -->
-                    <a href="{{route('customer.delete', ['id' => $customer->customer_id])}}">
-                        <button class="btn btn-danger">Trash</button>
+                    <a href="{{route('customer.force-delete', ['id' => $customer->customer_id])}}">
+                        <button class="btn btn-danger">Delete</button>
                     </a>
-                    <a href="{{route('customer.edit', ['id' => $customer->customer_id])}}">
-                        <button class="btn btn-primary">Edit</button>
+                    <a href="{{route('customer.restore', ['id' => $customer->customer_id])}}">
+                        <button class="btn btn-primary">Restore</button>
                     </a>
                 </td>
             </tr>
