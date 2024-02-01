@@ -18,49 +18,39 @@
         <!-- @csrf -->
 
         <div class="form-group row">
-            <!-- <input type="text" name="name" placeholder="Enter your Name" label="Name" value="{{$customer->name}}" class="col mx-2" /> -->
             {!! Form::text('name', $customer->name, [
             'id' => "name", 'required' => "", 'placeholder' => "Name", 'class' => "col mx-2"
             ]) !!}
-            <input type="email" name="email" placeholder="Enter your email" label="Email" value="{{$customer->email}}"
-                class="col mx-2" />
-        </div>
-
-        <div class="form-group row">
-            <input type="text" name="state" placeholder="Enter your state" label="State" value="{{$customer->state}}"
-                class="col mx-2" />
-            {!! Form::select('country', [
-            "1" => "Afghanistan",
-            "2" => "Albania",
-            "3" => "Algeria",
-            "4" => "Andorra",
-            "5" => "Angola",
-            "6" => "Anguilla",
-            "7" =>"Antigua & Barbuda",
-            "8" => "Argentina",
-            "9" => "Armenia",
-            "10" => "Aruba",
-            "11" => "Australia",
-            "12" => "Austria",
-            "13" => "Azerbaijan",
-            "14" => "Bahamas",
-            "15" => "Bahrain",
-            "16" => "Bangladesh",
-            "17" => "Barbados",
-            "18" => "Belarus",
-            "19" => "Belgium",
-            "20" => "Belize",
-            ],
-            '5', [
-            'id' => "name", 'required' => "", 'placeholder' => "Name", 'class' => "col mx-2"
+            {!! Form::email('email', $customer->email, [
+            'id' => "email", 'required' => "", 'placeholder' => "email", 'class' => "col mx-2"
             ]) !!}
         </div>
 
         <div class="form-group row">
-            <input type="text" name="address" placeholder="Enter your Address" label="Address"
-                value="{{$customer->address}}" class="col mx-2" />
-            <input type="password" name="password" placeholder="Enter your Password" label="Password"
-                class="col mx-2" />
+            {!! Form::text('state', $customer->state, [
+            'id' => "state", 'required' => "", 'placeholder' => "state", 'class' => "col mx-2"
+            ]) !!}
+            {!! Form::select('country',[
+             "1" => "Afghanistan",
+             "2" => "Albania",
+             "3" => "Algeria",
+             "4" => "India",
+            ],
+            '4', [
+            'id' => "country", 'required' => "", 'class' => "col mx-2"
+            ]) !!}
+            <!-- <input type="text" name="country" placeholder="Enter your Country" label="Country"
+                    value="{{$customer->country}}" class="col mx-2"  /> -->
+        </div>
+
+        <div class="form-group row">
+            {!! Form::text('address', $customer->address, [
+            'id' => "address", 'required' => "", 'placeholder' => "address", 'class' => "col mx-2"
+            ]) !!}
+            {!! Form::password('password', [
+            'id' => "password", 'required' => "", 'placeholder' => "password", 'class' => "col mx-2"
+            ]) !!}
+
         </div>
 
         <div class="form-group">
@@ -78,10 +68,13 @@
         </div>
 
         <div class="form-group row">
-            <input type="date" name="dob" placeholder="Enter Date" label="Date" value="{{$customer->dob}}"
-                class="col mx-2" />
-            <input type="number" name="points" placeholder="Enter your points" label="Points"
-                value="{{$customer->points}}" class="col mx-2" />
+                {!! Form::date('dob', \Carbon\Carbon::parse($customer->dob)->format('Y-m-d'), [
+            'id' => "dob", 'required' => "", 'class' => "col mx-2"
+            ]) !!}
+            <!-- <input type="date" name="dob" placeholder="Enter Date" label="Date" value="{{$customer->dob}}" class="col mx-2"  /> -->
+                {!! Form::number('points', $customer->points, [
+            'id' => "points", 'required' => "", 'placeholder' => "points", 'class' => "col mx-2"
+            ]) !!}
         </div>
 
         <div class="form-group">
@@ -97,8 +90,11 @@
                 Deactive</label>
         </div>
 
-        <button class="btn btn-primary">Submit</button>
+        <!-- <button class="btn btn-primary">Submit</button> -->
         <!-- </form> -->
+        {!! Form::submit('Submit', [
+            'id' => "points", 'required' => "", 'placeholder' => "points", 'class' => "btn btn-primary"
+            ]) !!}
         {!! Form::close() !!}
     </div>
 </div>
