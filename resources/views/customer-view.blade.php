@@ -46,7 +46,7 @@
                     <span class="badge badge-warning">Deactive</span>
                     @endif
                 </td>
-                <td>
+                <td style="display: flex;">
                     <!-- this is url method -->
                     <!-- <a href="{{url('/customer/delete/')}}/{{$customer->customer_id}}"> -->
 
@@ -54,7 +54,7 @@
                     <a href="{{route('customer.delete', ['id' => $customer->customer_id])}}">
                         <button class="btn btn-danger">Trash</button>
                     </a>
-                    <a href="{{route('customer.edit', ['id' => $customer->customer_id])}}">
+                    <a class="ml-2" href="{{route('customer.edit', ['id' => $customer->customer_id])}}">
                         <button class="btn btn-primary">Edit</button>
                     </a>
                 </td>
