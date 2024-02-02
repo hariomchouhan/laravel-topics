@@ -3,6 +3,15 @@
 @section('title', 'Customer List')
 @section('main')
 <div class="container">
+<form action="" class="container text-left col-9">
+        <div class="form-group">
+          <input type="search" name="search" class="form-control" placeholder="Search by Name or Email" value="{{$search}}">
+        </div>
+        <button class="btn btn-primary">Search</button>
+        <a href="{{route('customer.view')}}">
+            <button class="btn btn-primary" type="button">Clear</button>
+        </a>
+    </form>
     <div class="container text-right my-3">
         <a href="{{route('customer.create')}}" class="btn btn-primary">Add</a>
         <a href="{{route('customer.trash')}}" class="btn btn-danger">Go to trash</a>
