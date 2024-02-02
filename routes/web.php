@@ -5,6 +5,7 @@ use App\Http\Controllers\MyFirstController;
 use App\Models\Customer;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\MyFolder\SingleActionController;
 use App\Http\Controllers\MyFolder\ResourceController;
 use Illuminate\Http\Request;
@@ -45,6 +46,12 @@ Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->nam
 Route::get('/customer/view', [CustomerController::class, 'view'])->name('customer.view');
 Route::get('/customer/trash', [CustomerController::class, 'trash'])->name('customer.trash');
 Route::post('/customer', [CustomerController::class, 'store']);
+
+Route::get('/upload', function () {
+    return view('upload');
+});
+
+Route::post('/upload', [UploadController::class, 'upload']);
 
 Route::get('get-all-session', function () {
     $session = session()->all();
