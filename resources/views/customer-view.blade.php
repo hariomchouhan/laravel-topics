@@ -71,5 +71,12 @@
             @endforeach
         </tbody>
     </table>
+    <div class="row">
+    <!-- pagination in laravel with bootstrap 4 and search filter work only first query then we request the next page the search query is empty and view all data with pagination. -->
+        <!-- {{$customers->links()}} -->
+        
+        <!-- But it is work with search and without filter. -->
+        {{$customers->appends(request()->input())->links()}}
+    </div>
 </div>
 @endsection
