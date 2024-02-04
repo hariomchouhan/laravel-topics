@@ -62,7 +62,7 @@ class CustomerController extends Controller
             // where
             $customers = Customer::where('name', 'LIKE', "%$search%")->orWhere('email', 'LIKE', "%$search%")->get();
         }else {
-            $customers = Customer::all();
+            $customers = Customer::get();
         }
         $data = compact('customers', 'search');
         return view('customer-view')->with($data);
