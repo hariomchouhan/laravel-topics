@@ -3,9 +3,10 @@
 @section('title', 'Customer List')
 @section('main')
 <div class="container">
-<form action="" class="container text-left col-9">
+    <form action="" class="container text-left col-9">
         <div class="form-group">
-          <input type="search" name="search" class="form-control" placeholder="Search by Name or Email" value="{{$search}}">
+            <input type="search" name="search" class="form-control" placeholder="Search by Name or Email"
+                value="{{$search}}">
         </div>
         <button class="btn btn-primary">Search</button>
         <a href="{{route('customer.view')}}">
@@ -72,9 +73,10 @@
         </tbody>
     </table>
     <div class="row">
-    <!-- pagination in laravel with bootstrap 4 and search filter work only first query then we request the next page the search query is empty and view all data with pagination. -->
+
+        <!-- pagination in laravel with bootstrap 4 and search filter work only first query then we request the next page the search query is empty and view all data with pagination. -->
         <!-- {{$customers->links()}} -->
-        
+
         <!-- But it is work with search and without filter. -->
         {{$customers->appends(request()->input())->links()}}
     </div>
