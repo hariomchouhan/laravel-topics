@@ -9,6 +9,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\MyFolder\SingleActionController;
 use App\Http\Controllers\MyFolder\ResourceController;
 use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,32 +21,36 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function () { 
+Route::get('/', function () {
     return view('home');
 });
-Route::get('/hariom', function () { 
+Route::get('/hariom', function () {
     return view('hariom');
 });
-Route::get('/about', function () { 
+Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/contact', function ($name = null) { 
+Route::get('/contact', function ($name = null) {
     $data = compact('name');
     return view('Contact')->with($data);
 });
 
 Route::get('/register', [RegistrationController::class, 'index']);
 Route::post('/register', [RegistrationController::class, 'register']);
-Route::get('/customer/create', [CustomerController::class, 'index'])->name('customer.create');
-Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
-Route::get('/customer/force-delete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.force-delete');
-Route::get('/customer/restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
-Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
-Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
-Route::get('/customer/view', [CustomerController::class, 'view'])->name('customer.view');
-Route::get('/customer/trash', [CustomerController::class, 'trash'])->name('customer.trash');
-Route::post('/customer', [CustomerController::class, 'store']);
+
+
+Route::group(['prefix' => '/customer'], function () {
+    Route::get('/create', [CustomerController::class, 'index'])->name('customer.create');
+    Route::get('/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+    Route::get('/force-delete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.force-delete');
+    Route::get('/restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
+    Route::get('/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::post('/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+    Route::get('/view', [CustomerController::class, 'view'])->name('customer.view');
+    Route::get('/trash', [CustomerController::class, 'trash'])->name('customer.trash');
+    Route::post('/', [CustomerController::class, 'store']);
+});
 
 Route::get('/upload', function () {
     return view('upload');
