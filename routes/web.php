@@ -9,6 +9,7 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\MyFolder\SingleActionController;
 use App\Http\Controllers\MyFolder\ResourceController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -76,6 +77,10 @@ Route::get('destroy-seession', function () {
     return redirect('get-all-session');
 });
 
+Route::get('/{lang?}', function ($lang = null) {
+    App::setLocale($lang);
+    return view('home');
+});
 
 
 // Route::get('/customer', function(){
