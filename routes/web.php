@@ -10,6 +10,7 @@ use App\Http\Controllers\MyFolder\SingleActionController;
 use App\Http\Controllers\MyFolder\ResourceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Http\Controllers\MemberController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,10 @@ Route::group(['prefix' => '/customer'], function () {
     Route::get('/view', [CustomerController::class, 'view'])->name('customer.view');
     Route::get('/trash', [CustomerController::class, 'trash'])->name('customer.trash');
     Route::post('/', [CustomerController::class, 'store']);
+});
+
+Route::group(['prefix' => '/member'], function () {
+    Route::get('/data', [MemberController::class, 'index']);
 });
 
 Route::get('/upload', function () {
