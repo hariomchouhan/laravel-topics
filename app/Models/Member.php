@@ -11,6 +11,10 @@ class Member extends Model
     protected $primaryKey = "member_id";
     function getGroup()
     {
-        return $this->hasOne('App\Models\Group', 'group_id');
+        return $this->hasOne('App\Models\Group', 'group_id', 'group_id');
+    }
+    function group()
+    {
+        return $this->hasMany('App\Models\Group', 'group_id', 'group_id');
     }
 }

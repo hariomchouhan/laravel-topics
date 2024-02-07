@@ -54,8 +54,9 @@ Route::group(['prefix' => '/customer'], function () {
     Route::post('/', [CustomerController::class, 'store']);
 });
 
-Route::group(['prefix' => '/member'], function () {
-    Route::get('/data', [MemberController::class, 'index']);
+Route::group(['prefix' => '/data'], function () {
+    Route::get('/member', [MemberController::class, 'index']);
+    Route::get('/group', [MemberController::class, 'group']);
 });
 
 Route::get('/upload', function () {
