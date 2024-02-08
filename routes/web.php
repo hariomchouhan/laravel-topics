@@ -54,8 +54,11 @@ Route::group(['prefix' => '/customer'], function () {
     Route::post('/', [CustomerController::class, 'store']);
 });
 
-    Route::get('/member', [MemberController::class, 'index'])->middleware('guard');
-    Route::get('/group', [MemberController::class, 'group'])->middleware('guard');
+    Route::middleware(['guard'])->group(function () {
+        Route::get('/member', [MemberController::class, 'index']);
+        Route::get('/group', [MemberController::class, 'group']);
+    });
+
 
     Route::get('/login', function () {
         Session()->put('user_id', 1);
