@@ -54,10 +54,28 @@ Route::group(['prefix' => '/customer'], function () {
     Route::post('/', [CustomerController::class, 'store']);
 });
 
-Route::group(['prefix' => '/data'], function () {
-    Route::get('/member', [MemberController::class, 'index']);
-    Route::get('/group', [MemberController::class, 'group']);
-});
+    Route::get('/member', [MemberController::class, 'index'])->middleware('guard');
+    Route::get('/group', [MemberController::class, 'group'])->middleware('guard');
+
+    Route::get('/login', function () {
+        Session()->put('user_id', 1);
+        return redirect('/');
+    });
+
+    Route::get('/logout', function () {
+        Session()->forget('user_id');
+        return redirect('/');
+    });
+
+    Route::get('/no-access', function () {
+        echo "You're not allow to access the page";
+        die;
+    });
+
+// Route::group(['prefix' => '/data'], function () {
+//     Route::get('/member', [MemberController::class, 'index']);
+//     Route::get('/group', [MemberController::class, 'group']);
+// });
 
 Route::get('/upload', function () {
     return view('upload');

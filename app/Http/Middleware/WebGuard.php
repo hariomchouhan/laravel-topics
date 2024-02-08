@@ -15,10 +15,13 @@ class WebGuard
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if($request->age < 18) {
-            echo "You're not allow to access the page";
-            die;
-        } 
-        return $next($request);
+        // if($request->age < 18) {
+        //     echo "You're not allow to access the page";
+        //     die;
+        // } 
+        if (session()->has("user_id")) 
+            return $next($request);
+        else
+            return redirect('no-access');
     }
 }
